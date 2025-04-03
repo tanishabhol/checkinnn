@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XSS Vulnerability Example</title>
+</head>
+<body>
+
+    <form onsubmit="saveComment(event)">
+        <label for="comment">Enter your comment:</label>
+        <input type="text" id="comment" name="comment">
+        <button type="submit">Submit</button>
+    </form>
+
+    <h2>Comments:</h2>
+    <div id="comments"></div>
+
+    <script>
+        function saveComment(event) {
+            event.preventDefault();
+            let userInput = document.getElementById("comment").value;
+            document.getElementById("comments").innerHTML += "<p>" + userInput + "</p>";
+        }
+    </script>
+
+</body>
+</html>
